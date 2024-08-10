@@ -1,0 +1,21 @@
+# Build directory
+/build/
+
+# CMake cache and temporary files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+CMakeLists.txt.user
+CMakeLists.txt.autosave
+cmake_install.cmake
+Makefile
+
+# Compilation output
+*.o
+*.obj
+*.so
+*.dylib
+*.a
+*.lib
+*.exe
+
