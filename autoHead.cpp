@@ -52,6 +52,7 @@ public:
       this->head = NULL;
       free(this->tail);
       this->tail = NULL;
+
       return bffr;
     }
 
@@ -81,9 +82,6 @@ public:
     struct argsNode *temp = new argsNode;
     temp->arg = bffr;
     temp->link = NULL;
-
-    // debug bffr
-    // cout << "temp: " << temp << "\t\t" << bffr << endl;
 
     if (this->argTail == NULL) {
       this->argTail = temp;
@@ -123,38 +121,31 @@ private:
   ArgsList usrArgs; // user args in a circular linked list
 
   ArgsList *usrInpParser() {
-    //    int separator = 0;
-    //    string bffr = usrInp.substr(separator);
-    //
-    //    while (bffr.find(" ") != -1) {
-    //      int findPos = bffr.find(" ");
-    //      string cmdBffr = bffr.substr(0, findPos);
-    //
-    //      this->usrArgs.argsNodeInsert(cmdBffr);
-    //      this->totalArgs++;
-    //
-    //      bffr = bffr.substr(findPos + 1);
-    //    }
-    //
-    //    this->usrArgs.argsNodeInsert(bffr);
-    //    this->totalArgs++;
-
     CharQueue bffr;
     string cmd = "";
     bool escapeCharFlag = false;
     bool dQuotesFlag = false;
 
     for (char c : this->usrInp) {
+
       if (!escapeCharFlag) {
-        if (c == ' ' && cmd != "" && !dQuotesFlag) {
+
+        if ((c == ' ' || c == '\t') && !dQuotesFlag) {
+
+          if (cmd == " " || cmd == "")
+            continue;
+
+          cout << "cmd b4: " << cmd << "!" << endl;
           bffr.enq(cmd);
           cmd = "";
           continue;
+
         } else if (c == '\\') {
           escapeCharFlag = true;
         } else if (c == '\"') {
           dQuotesFlag = !dQuotesFlag;
         }
+
       } else {
         escapeCharFlag = false;
       }
@@ -169,8 +160,6 @@ private:
     while (!bffr.isEmpty()) {
       this->usrArgs.argsNodeInsert(bffr.deq());
     }
-
-    this->usrArgs.argsNodeDisplay();
 
     return NULL;
   }
@@ -196,6 +185,7 @@ int main(int argc, char *argv[]) {
       cout << argv[i] << endl;
     }
   }
+
   autoHead();
 
   while (usrInp != "exit") {
