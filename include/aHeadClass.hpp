@@ -32,11 +32,14 @@ private:
   };
 
   struct argsNode *argTail;
+  int size;
 
 public:
   ArgsList();
 
   struct argsNode *argsNodeInsert(std::string bffr);
+
+  std::string at(int index);
 
   void argsNodeDisplay();
 };
@@ -51,6 +54,8 @@ private:
 
 public:
   UsrCmd(std::string usrInp);
+
+  std::string baseCmd();
 };
 
 #endif // !aHeadClass_HPP

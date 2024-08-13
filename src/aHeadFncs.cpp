@@ -1,7 +1,16 @@
 #include "../include/aHeadFncs.hpp"
+// #include "../include/aHeadClass.hpp"
+#include <cstdlib>
 #include <iostream>
-using namespace std;
 
-void autoHead() {
-  cout << "autoHead\nez autoGen Header Files 4u <3" << endl << endl;
+int autoHead() {
+  std::cout << "autoHead\nez autoGen Header Files 4u <3" << std::endl
+            << std::endl;
+
+  return 0;
+}
+
+int autoHeadExit() {
+  exit(0);
+  return 0;
 }

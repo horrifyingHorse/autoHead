@@ -1,6 +1,10 @@
 #ifndef AHEADFNCS_HPP
 #define AHEADFNCS_HPP
 
-void autoHead();
+// #include "aHeadClass.hpp"
+
+int autoHead();
+
+int autoHeadExit();
 
 #endif // !AHEADFNCS_HPP

@@ -52,12 +52,17 @@ string CharQueue::deq() {
 
 bool CharQueue::isEmpty() { return (this->tail == NULL) ? true : false; }
 
-ArgsList::ArgsList() { argTail = NULL; }
+ArgsList::ArgsList() {
+  argTail = NULL;
+  this->size = 0;
+}
 
 struct ArgsList::argsNode *ArgsList::argsNodeInsert(string bffr) {
   struct argsNode *temp = new argsNode;
   temp->arg = bffr;
   temp->link = NULL;
+
+  this->size++;
 
   if (this->argTail == NULL) {
     this->argTail = temp;
@@ -70,6 +75,21 @@ struct ArgsList::argsNode *ArgsList::argsNodeInsert(string bffr) {
   this->argTail = temp;
 
   return this->argTail;
+}
+
+std::string ArgsList::at(int index) {
+  if (index >= this->size) {
+    return "";
+  }
+
+  struct argsNode *head = this->argTail->link;
+
+  while (index != 0) {
+    head = head->link;
+    index--;
+  }
+
+  return head->arg;
 }
 
 void ArgsList::argsNodeDisplay() {
@@ -145,3 +165,5 @@ UsrCmd::UsrCmd(string usrInp) {
   usrInpParser();
   usrArgs.argsNodeDisplay();
 }
+
+std::string UsrCmd::baseCmd() { return this->usrArgs.at(0); }
