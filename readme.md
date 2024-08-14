@@ -1,3 +1,18 @@
-you need cmake to build it 
+## Prerequisites
+- cmake
+- cpp compiler
 
-run buildit.sh to build the project
+## Build
+Linux
+```bash
+chmod +x buildit.sh 
+./buildit.sh
+```
+
+Executable File is created in the ./build directory.
+
+
+## Implemented Using
+- Maps
+- Queues
+- Linked Lists
