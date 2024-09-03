@@ -58,6 +58,7 @@ int ahProcess_gen(UsrCmd &cmd) {
 // map related
 void populateCliCmdMap() {
   cliCmdMap["exit"] = ahProcess_exit;
+  cliCmdMap["q"] = ahProcess_exit;
   cliCmdMap["-g"] = ahProcess_gen;
 
   return;
