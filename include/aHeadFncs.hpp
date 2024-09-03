@@ -5,7 +5,7 @@
 
 int autoHead();
 
-int ahProcess_exit(const UsrCmd &);
+int ahProcess_exit(UsrCmd &);
 
 void populateCliCmdMap();
 
